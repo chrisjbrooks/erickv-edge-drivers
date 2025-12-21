@@ -10,7 +10,6 @@
 
 <a href=>Accept Invite</a>
 
-
 ### Index
 
 - [Zigbee Edge Drivers](./zigbee)
