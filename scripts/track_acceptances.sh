@@ -16,17 +16,12 @@ python -c "
 from sys import argv
 
 template = '''
-- **Name**: {}
-- **Owner**: {}
-- **Description**: {}
-- **Terms URL**: {}
-- **Acceptances**: {}
-
-<a href={}>Accept Invite</a>
-
+json```
+{}
+```
 '''
 
-template = template.format(argv[1], argv[2], argv[3], argv[4], argv[5], argv[6])
+template = template.format(argv[1])
 
 content = None
 with open('readme_template', 'r') as template_doc:
@@ -35,4 +30,4 @@ with open('readme_template', 'r') as template_doc:
     content = content.replace(tag, template)
     with open('README.md', 'w') as readme:
         readme.write(content)
-" "$NAME" "$OWNER" "$DESCRIPTION" "$TERMS" "$ACCEPTANCES" "$ACCEPT_URL";
+" "$($INVITE_INFO | jq .)";
