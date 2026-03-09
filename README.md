@@ -2,14 +2,7 @@
 
 ### Channel
 
-- **Name**: 
-- **Owner**: 
-- **Description**: 
-- **Terms URL**: 
-- **Acceptances**: 
-
-<a href=>Accept Invite</a>
-
+json
 
 ### Index
 
