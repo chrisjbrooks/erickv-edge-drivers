@@ -3,8 +3,6 @@ INVITE_UUID=$1;
 ST_TOKEN=$2;
 INVITE_INFO=$(smartthings edge:channels:invites $INVITE_UUID --json --token $ST_TOKEN);
 
-echo $INVITE_INFO | jq .
-
 NAME=$(echo $INVITE_INFO | jq .metadata.name);
 OWNER=$(echo $INVITE_INFO | jq .metadata.owner);
 DESCRIPTION=$(echo $INVITE_INFO | jq .metadata.description);

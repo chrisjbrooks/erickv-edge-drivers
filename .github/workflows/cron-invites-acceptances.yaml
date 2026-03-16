@@ -2,7 +2,7 @@ name: "Channel Invites Acceptances (develop)"
 run-name: "cron to review acceptances (develop)"
 on:
   schedule:
-  - cron: "0 0 * * 0"
+    - cron: "0 0 * * 0"
 
 jobs:
   cron:
@@ -11,6 +11,7 @@ jobs:
       INVITE_PROD: ${{ secrets.ST_INVITE_PRODUCTION }}
       INVITE_DEV: ${{ secrets.ST_INVITE_DEVELOP }}
       ST_TOKEN: ${{ secrets.ST_PAT }}
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: "setup smartthings cli"
         uses: "actions/setup-node@v3"
@@ -48,7 +49,19 @@ jobs:
           git config user.email "erickvneri@github";
           git config user.name "erickvneri";
 
+          #
+          # bruteforced invite UUIDs, nothing to worry about,
+          # I'll fix it later =]
+          #
+          echo "Main invite:"
+          smartthings edge:channels:invites 82d9761d-7ce1-4897-9ffe-22b2b24e922b --json --token $ST_TOKEN
+          echo "Secondary invite:"
+          smartthings edge:channels:invites eba03afe-0f26-43b2-95e1-a0dde8011ebe --json --token $ST_TOKEN
+
           ./scripts/track_acceptances.sh $INVITE_PROD $ST_TOKEN && \
-          git add README.md && \
-          git commit -m "cron: update acceptances count" && \
-          git push;
+          #
+          # Temporarily removing fs transaction
+          #
+          # git add README.md && \
+          # git commit -m "cron: update acceptances count" && \
+          # git push;
