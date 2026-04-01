@@ -1,5 +1,5 @@
-name: "Channel Invites Acceptances (develop)"
-run-name: "cron to review acceptances (develop)"
+name: "Channel Invites Acceptances"
+run-name: "cron to review acceptances"
 on:
   schedule:
     - cron: "0 0 * * 0"
@@ -31,13 +31,20 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
       - run: |
-          git config user.email "erickvneri@github";
-          git config user.name "erickvneri";
+          # git config user.email "erickvneri@github";
+          # git config user.name "erickvneri";
 
-          ./scripts/track_acceptances.sh $INVITE_DEV $ST_TOKEN && \
-          git add README.md && \
-          git commit -m "cron: update acceptances count" && \
-          git push;
+
+          echo "Main invite:"
+          smartthings edge:channels:invites $INVITE_DEV --json --token $ST_TOKEN
+
+          #
+          # Temporarily removing fs transaction
+          #
+          # ./scripts/track_acceptances.sh $INVITE_DEV $ST_TOKEN && \
+          # git add README.md && \
+          # git commit -m "cron: update acceptances count" && \
+          # git push;
 
       - name: "update production channel information"
         uses: "actions/checkout@v3"
