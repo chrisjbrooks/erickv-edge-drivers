@@ -379,6 +379,12 @@ zigbeeManufacturer:
     model: "TS004F"
     deviceProfileName: 4-button-battery
 
+  - id: "HOBEIAN/ZG-101ZL"
+    deviceLabel: "Scene Switch"
+    manufacturer: "HOBEIAN"
+    model: "ZG-101ZL"
+    deviceProfileName: 1-button-battery
+
   - id: "HOBEIAN/TS0044"
     deviceLabel: "Scene Switch"
     manufacturer: "HOBEIAN"
@@ -433,3 +439,4 @@ zigbeeManufacturer:
     manufacturer: "_TZ3000_itb0omhv"
     model: "TS0041"
     deviceProfileName: button-battery
+
