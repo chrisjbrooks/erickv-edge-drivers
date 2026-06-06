@@ -383,7 +383,7 @@ zigbeeManufacturer:
     deviceLabel: "Scene Switch"
     manufacturer: "HOBEIAN"
     model: "ZG-101ZL"
-    deviceProfileName: 1-button-battery
+    deviceProfileName: button-battery
 
   - id: "HOBEIAN/TS0044"
     deviceLabel: "Scene Switch"
