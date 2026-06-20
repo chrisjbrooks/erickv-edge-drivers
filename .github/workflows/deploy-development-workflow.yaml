@@ -15,6 +15,8 @@ jobs:
 
       - name: "SmartThings CLI"
         uses: "actions/setup-node@v2"
+        with:
+          node-version: '20'
       - run: "npm install --global @smartthings/cli"
 
       - name: "Upgrade Edge Drivers"
