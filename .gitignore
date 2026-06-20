@@ -42,3 +42,4 @@ deploy_dev.sh
 
 # local env files
 .env
+.env.local
